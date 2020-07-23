@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [HubSpot Regression Suite]">
+  <parameter name="browser" value="chrome"/>
+  <listeners>
+    <listener class-name="com.qa.hubspot.listener.TesultsListener"/>
+    <listener class-name="com.qa.hubspot.listener.TestAllureListener"/>
+  </listeners>
+  <test name="HubSpot Functional Regression Test(failed)">
+    <parameter name="browser" value="chrome"/>
+    <classes>
+      <class name="com.qa.hubspot.tests.HomePageTest">
+        <methods>
+          <include name="verifyLoggedInUser"/>
+          <include name="homeHeader"/>
+          <include name="tearDown"/>
+          <include name="getTitle"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- com.qa.hubspot.tests.HomePageTest -->
+      <class name="com.qa.hubspot.tests.LoginPageTest">
+        <methods>
+          <include name="setup"/>
+          <include name="LoginTest"/>
+          <include name="tearDown"/>
+        </methods>
+      </class> <!-- com.qa.hubspot.tests.LoginPageTest -->
+    </classes>
+  </test> <!-- HubSpot Functional Regression Test(failed) -->
+</suite> <!-- Failed suite [HubSpot Regression Suite] -->
