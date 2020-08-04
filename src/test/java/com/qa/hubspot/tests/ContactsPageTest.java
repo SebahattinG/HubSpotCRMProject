@@ -1,5 +1,9 @@
 package com.qa.hubspot.tests;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.AssertJUnit;
 import java.util.Properties;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -30,6 +34,7 @@ public class ContactsPageTest {
 	Credentials userCred;
 
 
+	
 	@BeforeMethod
 	public void setUp() {
 		basePage = new BasePage();
@@ -47,7 +52,7 @@ public class ContactsPageTest {
 	public void verifyContactsPageTitle() {
 		String title = contactsPage.getContactsPageTitle();
 		System.out.println("contacts page title is: " + title);
-		Assert.assertEquals(title, "Contacts");
+		AssertJUnit.assertEquals(title, "Contacts");
 	}
 
 	@DataProvider
@@ -62,6 +67,7 @@ public class ContactsPageTest {
 		
 	}
 
+	
 	@AfterMethod
 	public void tearDown() {
 		driver.quit();

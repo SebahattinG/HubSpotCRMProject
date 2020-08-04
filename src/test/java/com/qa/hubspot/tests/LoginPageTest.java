@@ -1,5 +1,8 @@
 package com.qa.hubspot.tests;
 
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
@@ -58,7 +61,7 @@ public class LoginPageTest {
 	public void verifyLoginPageTitle(){	
 	String title=	loginPage.getPageTitle();
 	System.out.println("Login page title is "+ title);
-	Assert.assertEquals(title, AppConstants.LOGIN_PAGE_TITLE);
+	AssertJUnit.assertEquals(title, AppConstants.LOGIN_PAGE_TITLE);
 	}
 	
 	
@@ -67,7 +70,7 @@ public class LoginPageTest {
 	
 	@Severity(SeverityLevel.BLOCKER)
 	public void verifySignupLink(){
-		Assert.assertTrue(loginPage.checkSignup());
+		AssertJUnit.assertTrue(loginPage.checkSignup());
 		}
 	
 	
@@ -79,7 +82,7 @@ public class LoginPageTest {
 		HomePage homePage =loginPage.doLogin(userCred);
 		String accountName= homePage.getLoggedInUserAccountName();
 		System.out.println("logged in account name "+ accountName);
-		Assert.assertEquals(accountName, prop.getProperty("accountname"));
+		AssertJUnit.assertEquals(accountName, prop.getProperty("accountname"));
 		
 	}
 	@DataProvider
@@ -100,10 +103,11 @@ public class LoginPageTest {
 		userCred.setAppUsername(username);
 		userCred.setAppPassword(pwd);
 		loginPage.doLogin(userCred);
-		Assert.assertTrue(loginPage.checkLoginerrorMessage());
+		AssertJUnit.assertTrue(loginPage.checkLoginerrorMessage());
 		
 	}
 		
+	@AfterMethod
 	@AfterTest
 	public void tearDown(){
 		driver.close();
